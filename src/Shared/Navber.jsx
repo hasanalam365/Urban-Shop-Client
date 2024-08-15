@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Navber = () => {
 
-    const [isOpenProfile, setIsOpenProfile] = useState(false)
+    // const [isOpenProfile, setIsOpenProfile] = useState(false)
 
-    // const handleProfile = () => {
-    //     setIsOpenProfile(true)
-    // }
+    const { user, signOutUser } = useAuth()
+
+    const handleLogOut = () => {
+        signOutUser()
+        toast('Logout Successfully')
+    }
+
+
 
     const navLinks = <>
 
@@ -58,12 +65,20 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-3">
-                    <button onClick={() => setIsOpenProfile(!isOpenProfile)} className='tooltip tooltip-left' data-tip="Hasan">
-                        <CgProfile className='text-3xl text-white' />
+                    {
+                        user?.email ? <h5 className='text-white'>{user.email}</h5>
+                            :
+
+                            <CgProfile className='text-3xl text-white' />
+
+                    }
+                    {user?.email ? <button onClick={handleLogOut} className='btn btn-ghost text-white bg-[#12809e]'>
+                        <Link>Logout</Link>
                     </button>
-                    <button className='btn btn-ghost text-white bg-[#173B45]'>
-                        <Link to="/login">Login</Link>
-                    </button>
+                        :
+                        <button className='btn btn-ghost text-white bg-[#12809e]'>
+                            <Link to="/login">Login</Link>
+                        </button>}
 
                 </div>
             </div>

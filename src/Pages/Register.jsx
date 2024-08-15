@@ -2,21 +2,26 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Register = () => {
 
-    const { signInUser } = useAuth()
+    const { signUpUser, signOutUser } = useAuth()
     const navigate = useNavigate()
 
-    const handleLogin = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        signInUser(email, password)
+        signUpUser(email, password)
             .then(result => {
-                toast('Login Successfully')
-                navigate('/')
+                console.log(result.user)
+                if (result.user) {
+
+                    toast('Registration Successfully')
+                    navigate('/login')
+                    signOutUser()
+                }
             })
 
     }
@@ -27,13 +32,13 @@ const Login = () => {
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col md:flex-row lg:flex-row">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold">Login now!</h1>
+                        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold">Register now!</h1>
                         <p className="py-6">
                             Welcome back! Please log in to access your account and shop our latest products.
                         </p>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form onSubmit={handleLogin} className="card-body">
+                        <form onSubmit={handleRegister} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -50,18 +55,17 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-[#B43F3F] text-white">Login</button>
+                                <button className="btn bg-[#B43F3F] text-white">Register</button>
                             </div>
                         </form>
                         <div className="flex items-center justify-center pb-4">
-                            <p>Do not have an account? Please<Link to='/register' className="text-[#1507e2] font-medium"> Register</Link></p>
+                            <p>Do you have an account? Please<Link to='/login' className="text-[#1507e2] font-medium"> Login</Link></p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;
