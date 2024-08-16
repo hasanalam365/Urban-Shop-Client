@@ -34,6 +34,9 @@ const Products = () => {
                     priceRange: priceRange,
                     sortBy: sortBy
                 },
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
             });
             return res.data
         },
