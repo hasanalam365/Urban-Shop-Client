@@ -8,6 +8,9 @@ const Products = () => {
     const [hasFocus, setHasFocus] = useState(false);
     const [searchProduct, setSearchProduct] = useState('')
     const [searchInput, setSearchInput] = useState('')
+    const [selectBrand, setSelectBrand] = useState('')
+    const [selectCategory, setSelectCategory] = useState('')
+
     const { data: products, refetch, isLoading } = useQuery({
         queryKey: ['all-products', searchProduct],
         queryFn: async () => {
@@ -22,7 +25,21 @@ const Products = () => {
         setSearchProduct(searchInput)
     }
 
+    const handleBrandChange = (e) => {
+        setSelectBrand(e.target.value);
+    };
+    const handleCategoryChange = (e) => {
+        setSelectCategory(e.target.value);
+    };
+    const handleFilter = () => {
+        console.log(selectBrand)
+        console.log(selectCategory)
+    }
 
+
+    const categories = [...new Set(products?.map(product => product.category))]
+
+    const brands = [...new Set(products?.map(product => product.brand))]
 
     return (
         <div className="pt-28 p-5">
@@ -41,18 +58,43 @@ const Products = () => {
                         />
                     </div>
 
-                    {/* <select className="select select-bordered join-item">
-                        <option disabled selected>Filter</option>
-                        <option>Sci-fi</option>
-                        <option>Drama</option>
-                        <option>Action</option>
-                    </select> */}
+
                     <div className="indicator">
 
                         <button onClick={handleSearch} className="btn join-item">Search</button>
                     </div>
                 </div>
             </div>
+
+            <div className="flex items-center justify-center mt-5 ">
+                <select className="select select-bordered join-item" value={selectBrand} onChange={handleBrandChange}>
+                    <option value="" disabled>Brand Name</option>
+                    {
+                        brands.map((brand, index) => (
+                            <option key={index} value={brand}>{brand}</option>
+                        ))
+                    }
+                </select>
+                <select className="select select-bordered join-item" value={selectCategory} onChange={handleCategoryChange}>
+                    <option value="" disabled>Category</option>
+                    {
+                        categories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                        ))
+                    }
+                </select>
+                {/* <select className="select select-bordered join-item">
+                    <option disabled selected>Filter</option>
+                    <option>Sci-fi</option>
+                    <option>Drama</option>
+                    <option>Action</option>
+                </select> */}
+                <div className="indicator">
+
+                    <button onClick={handleFilter} className="btn join-item">Filter</button>
+                </div>
+            </div>
+
             <div>
                 <h1 className="text-3xl font-bold mb-4">All Products </h1>
             </div>
