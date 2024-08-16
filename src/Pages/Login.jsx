@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 
-    const { signInUser } = useAuth()
+    const { signInUser, googleSignIn } = useAuth()
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
@@ -14,11 +15,20 @@ const Login = () => {
         const password = form.password.value;
 
         signInUser(email, password)
-            .then(result => {
+            .then(() => {
                 toast('Login Successfully')
                 navigate('/')
             })
 
+    }
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then(() => {
+
+                toast('Login Successfully')
+                navigate('/')
+            })
     }
 
 
@@ -53,6 +63,13 @@ const Login = () => {
                                 <button className="btn bg-[#B43F3F] text-white">Login</button>
                             </div>
                         </form>
+                        <div className="divider">OR</div>
+                        <button onClick={handleGoogleLogin} className="border-2 w-3/4 md:w-3/4 lg:w-3/4 mx-auto rounded-lg p-2 mb-3">
+                            <div className="flex gap-3 items-center justify-center ">
+                                <FcGoogle className="text-2xl"></FcGoogle>
+                                <h5 className="text-lg">Continue with Google</h5>
+                            </div>
+                        </button>
                         <div className="flex items-center justify-center pb-4">
                             <p>Do not have an account? Please<Link to='/register' className="text-[#1507e2] font-medium"> Register</Link></p>
                         </div>
