@@ -12,23 +12,19 @@ const Products = () => {
     const [selectCategory, setSelectCategory] = useState('')
     const [priceRange, setPriceRange] = useState('')
     const [sortBy, setSortBy] = useState('');
-    // const { data: products, refetch, isLoading } = useQuery({
-    //     queryKey: ['all-products', searchProduct],
-    //     queryFn: async () => {
-    //         const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products?searchProduct=${searchProduct}`);
-    //         return res.data
-    //     }
-    // })
+
     const { data: productsCatBrand } = useQuery({
         queryKey: ['productsCatBrand'],
         queryFn: async () => {
             const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/productsCatBrand`);
             return res.data
-        }
+        },
+
+
     })
 
     const { data: products, refetch, isLoading } = useQuery({
-        queryKey: ['all-products'],
+        queryKey: ['all-products', searchProduct, sortBy],
         queryFn: async () => {
             const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
                 params: {
@@ -40,7 +36,9 @@ const Products = () => {
                 },
             });
             return res.data
-        }
+        },
+        refetchOnWindowFocus: false,
+        enabled: true
     })
 
     // console.log(import.meta.env.VITE_URL_PATH_LOCAL)
@@ -48,7 +46,11 @@ const Products = () => {
     const handleSearch = () => {
 
         setSearchProduct(searchInput)
-
+        setSelectCategory('');
+        setSelectBrand('');
+        setPriceRange('');
+        setSortBy('');
+        refetch()
 
     }
 
@@ -65,16 +67,14 @@ const Products = () => {
 
     const handleSortChange = (e) => {
         setSortBy(e.target.value)
-        refetch()
+
     }
 
 
     const handleFilter = () => {
-        setSelectCategory('');
-        setSelectBrand('');
-        setPriceRange('');
-        setSortBy('');
-        refetch();
+
+
+        refetch()
     };
 
 
