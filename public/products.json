@@ -1,0 +1,658 @@
+[
+    {
+        "title": "Apple iPhone 14",
+        "brand": "Apple",
+        "price": 999.99,
+        "rating": 4.8,
+        "category": "Smartphones",
+        "description": "The latest iPhone with an A15 Bionic chip and advanced dual-camera system.",
+        "features": [
+            "5G connectivity",
+            "Super Retina XDR display",
+            "Face ID",
+            "MagSafe"
+        ],
+        "imgUrl": "https://i.ibb.co/2SnvJ4M/2149437112.jpg",
+        "date": "16/08/2024 10:00:00"
+    },
+    {
+        "title": "Samsung Galaxy S22",
+        "brand": "Samsung",
+        "price": 899.99,
+        "rating": 4.7,
+        "category": "Smartphones",
+        "description": "High-performance smartphone with an AMOLED display and advanced camera features.",
+        "features": [
+            "120Hz refresh rate",
+            "8K video recording",
+            "Fast charging",
+            "IP68 water resistance"
+        ],
+        "imgUrl": "https://i.ibb.co/qjQ0FTW/Samsung-Galaxy-S22.jpg",
+        "date": "16/08/2024 11:30:00"
+    },
+    {
+        "title": "HP Spectre x360 14",
+        "brand": "HP",
+        "price": 1399.99,
+        "rating": 4.7,
+        "category": "Laptops",
+        "description": "Versatile 2-in-1 laptop with a 13.5-inch OLED display and Intel's latest processors.",
+        "features": [
+            "13.5-inch OLED display",
+            "12th Gen Intel Core",
+            "360-degree hinge",
+            "Fast charging"
+        ],
+        "imgUrl": "https://i.ibb.co/Vq5Vg9w/HP-Spectre-x360-14.jpg",
+        "date": "16/08/2024 12:00:00"
+    },
+    {
+        "title": "Lenovo ThinkPad X1 Carbon Gen 10",
+        "brand": "Lenovo",
+        "price": 1599.99,
+        "rating": 4.8,
+        "category": "Laptops",
+        "description": "Durable business laptop with a lightweight design and robust performance.",
+        "features": [
+            "14-inch 4K display",
+            "12th Gen Intel Core",
+            "ThinkShield security",
+            "Long battery life"
+        ],
+        "imgUrl": "https://i.ibb.co/sCtbLnc/Lenovo-Think-Pad-X1-Carbon-Gen-10.jpg",
+        "date": "16/08/2024 13:30:00"
+    },
+    {
+        "title": "Asus ROG Zephyrus G14",
+        "brand": "Asus",
+        "price": 1599.99,
+        "rating": 4.7,
+        "category": "Laptops",
+        "description": "High-performance gaming laptop with AMD Ryzen 9 and a compact design.",
+        "features": [
+            "AMD Ryzen 9 5900HS",
+            "14-inch QHD display",
+            "NVIDIA GeForce RTX 3060",
+            "Fast refresh rate"
+        ],
+        "imgUrl": "https://i.ibb.co/4K4fDtC/Asus-ROG-Zephyrus-G14.jpg",
+        "date": "16/08/2024 14:00:00"
+    },
+    {
+        "title": "Microsoft Surface Laptop 5",
+        "brand": "Microsoft",
+        "price": 1399.99,
+        "rating": 4.6,
+        "category": "Laptops",
+        "description": "Sleek and stylish laptop with a high-resolution PixelSense touchscreen display.",
+        "features": [
+            "13.5-inch PixelSense display",
+            "12th Gen Intel Core",
+            "Surface Pen support",
+            "Fast charging"
+        ],
+        "imgUrl": "https://i.ibb.co/xFZgrbV/Microsoft-Surface-Laptop-5.jpg",
+        "date": "16/08/2024 15:30:00"
+    },
+    {
+        "title": "Acer Swift X",
+        "brand": "Acer",
+        "price": 999.99,
+        "rating": 4.5,
+        "category": "Laptops",
+        "description": "Lightweight and powerful laptop with AMD Ryzen 7 and NVIDIA GeForce RTX graphics.",
+        "features": [
+            "14-inch Full HD display",
+            "AMD Ryzen 7 5800U",
+            "NVIDIA GeForce RTX 3050 Ti",
+            "Metal chassis"
+        ],
+        "imgUrl": "https://i.ibb.co/GtGp66V/Acer-Swift-X.png",
+        "date": "16/08/2024 16:00:00"
+    },
+    {
+        "title": "Dell XPS 13",
+        "brand": "Dell",
+        "price": 1299.99,
+        "rating": 4.6,
+        "category": "Laptops",
+        "description": "Ultra-thin laptop with a stunning 13.4-inch display and powerful performance.",
+        "features": [
+            "11th Gen Intel Core",
+            "4K display option",
+            "Wi-Fi 6",
+            "Thunderbolt 4"
+        ],
+        "imgUrl": "https://i.ibb.co/1zZQSZs/Dell-XPS-13.jpg",
+        "date": "16/08/2024 17:30:00"
+    },
+    {
+        "title": "Apple MacBook Pro 16",
+        "brand": "Apple",
+        "price": 2399.99,
+        "rating": 4.9,
+        "category": "Laptops",
+        "description": "High-performance laptop with the M1 Max chip and Liquid Retina XDR display.",
+        "features": [
+            "M1 Max chip",
+            "16-core GPU",
+            "Liquid Retina XDR display",
+            "Thunderbolt 4 ports"
+        ],
+        "imgUrl": "https://i.ibb.co/q0BjGTD/Apple-Mac-Book-Pro-16.jpg",
+        "date": "16/08/2024 18:00:00"
+    },
+    {
+        "title": "Sony WH-1000XM4",
+        "brand": "Sony",
+        "price": 349.99,
+        "rating": 4.7,
+        "category": "Headphones",
+        "description": "Industry-leading noise-canceling headphones with long battery life and superior sound quality.",
+        "features": [
+            "Active Noise Cancellation",
+            "30-hour battery life",
+            "Touch sensor controls",
+            "Bluetooth 5.0"
+        ],
+        "imgUrl": "https://i.ibb.co/RCVDCJQ/Sony-WH-1000-XM4.jpg",
+        "date": "16/08/2024 19:00:00"
+    },
+    {
+        "title": "Bang & Olufsen Beoplay H9",
+        "brand": "Bang & Olufsen",
+        "price": 499.99,
+        "rating": 4.6,
+        "category": "Headphones",
+        "description": "Luxury over-ear headphones with adaptive noise cancellation and premium materials.",
+        "features": [
+            "Adaptive Noise Cancellation",
+            "25-hour battery life",
+            "Touch controls",
+            "Bluetooth 4.2"
+        ],
+        "imgUrl": "https://i.ibb.co/D1T5Jg2/Bang-Olufsen-Beoplay-H9.jpg",
+        "date": "16/08/2024 20:30:00"
+    },
+    {
+        "title": "Audio-Technica ATH-M50xBT",
+        "brand": "Audio-Technica",
+        "price": 199.99,
+        "rating": 4.5,
+        "category": "Headphones",
+        "description": "Wireless version of the critically acclaimed M50x headphones, with extended battery life and excellent sound quality.",
+        "features": [
+            "40-hour battery life",
+            "Bluetooth 5.0",
+            "Touch controls",
+            "Over-ear design"
+        ],
+        "imgUrl": "https://i.ibb.co/9W2RqjP/Audio-Technica-ATH-M50x-BT.jpg",
+        "date": "16/08/2024 21:00:00"
+    },
+    {
+        "title": "Jabra Elite 85h",
+        "brand": "Jabra",
+        "price": 249.99,
+        "rating": 4.6,
+        "category": "Headphones",
+        "description": "Smart noise-canceling headphones with up to 36 hours of battery life and superior call quality.",
+        "features": [
+            "Active Noise Cancellation",
+            "36-hour battery life",
+            "Water-resistant",
+            "Bluetooth 5.0"
+        ],
+        "imgUrl": "https://i.ibb.co/R0VWzNq/Jabra-Elite-85h.jpg",
+        "date": "16/08/2024 22:30:00"
+    },
+    {
+        "title": "Apple AirPods Pro",
+        "brand": "Apple",
+        "price": 249.99,
+        "rating": 4.6,
+        "category": "Headphones",
+        "description": "Compact true wireless earbuds with active noise cancellation and transparency mode.",
+        "features": [
+            "Active Noise Cancellation",
+            "Transparency mode",
+            "Spatial audio",
+            "MagSafe charging case"
+        ],
+        "imgUrl": "https://i.ibb.co/vz7cfk5/Apple-Air-Pods-Pro.jpg",
+        "date": "16/08/2024 23:00:00"
+    },
+    {
+        "title": "Samsung Galaxy Watch 6",
+        "brand": "Samsung",
+        "price": 399.99,
+        "rating": 4.6,
+        "category": "Smartwatches",
+        "description": "Advanced smartwatch with health tracking, AMOLED display, and 4G connectivity.",
+        "features": [
+            "AMOLED display",
+            "Health tracking",
+            "4G connectivity",
+            "Customizable watch faces"
+        ],
+        "imgUrl": "https://i.ibb.co/nft1XvH/Samsung-Galaxy-Watch-6.jpg",
+        "date": "17/08/2024 09:00:00"
+    },
+    {
+        "title": "Apple Watch Series 8",
+        "brand": "Apple",
+        "price": 399.99,
+        "rating": 4.8,
+        "category": "Smartwatches",
+        "description": "Feature-packed smartwatch with advanced health monitoring and a sleek design.",
+        "features": [
+            "ECG and blood oxygen monitoring",
+            "Always-on display",
+            "Fast charging",
+            "Water-resistant"
+        ],
+        "imgUrl": "https://i.ibb.co/fN8sCj1/Apple-Watch-Series-8.jpg",
+        "date": "17/08/2024 10:30:00"
+    },
+    {
+        "title": "Garmin Venu 3",
+        "brand": "Garmin",
+        "price": 349.99,
+        "rating": 4.7,
+        "category": "Smartwatches",
+        "description": "Fitness-focused smartwatch with GPS, heart rate monitoring, and long battery life.",
+        "features": [
+            "GPS tracking",
+            "Heart rate monitoring",
+            "Smart notifications",
+            "Up to 14-day battery life"
+        ],
+        "imgUrl": "https://i.ibb.co/fFH0rF6/Garmin-Venu-3.jpg",
+        "date": "17/08/2024 12:00:00"
+    },
+    {
+        "title": "Google Nest Hub Max",
+        "brand": "Google",
+        "price": 229.99,
+        "rating": 4.6,
+        "category": "Smart Speakers",
+        "description": "Smart display with Google Assistant, capable of controlling smart home devices and streaming media.",
+        "features": [
+            "10-inch HD display",
+            "Google Assistant",
+            "Built-in camera",
+            "Stereo speakers"
+        ],
+        "imgUrl": "https://i.ibb.co/D6vJ53D/Google-Nest-Hub-Max.jpg",
+        "date": "17/08/2024 13:30:00"
+    },
+    {
+        "title": "Amazon Echo Studio",
+        "brand": "Amazon",
+        "price": 199.99,
+        "rating": 4.7,
+        "category": "Smart Speakers",
+        "description": "High-fidelity smart speaker with Amazon Alexa and immersive sound quality.",
+        "features": [
+            "3D audio technology",
+            "Alexa voice control",
+            "Built-in smart home hub",
+            "High-resolution audio"
+        ],
+        "imgUrl": "https://i.ibb.co/n8Ft0ZD/Amazon-Echo-Studio.jpg",
+        "date": "17/08/2024 15:00:00"
+    },
+    {
+        "title": "Apple HomePod mini",
+        "brand": "Apple",
+        "price": 99.99,
+        "rating": 4.5,
+        "category": "Smart Speakers",
+        "description": "Compact smart speaker with Siri voice control and deep integration with Apple devices.",
+        "features": [
+            "Siri voice control",
+            "Compact design",
+            "Intercom feature",
+            "High-fidelity audio"
+        ],
+        "imgUrl": "https://i.ibb.co/7g6V7Yw/Apple-Home-Pod-Mini.jpg",
+        "date": "17/08/2024 16:30:00"
+    },
+    {
+        "title": "Arlo Pro 4",
+        "brand": "Arlo",
+        "price": 199.99,
+        "rating": 4.6,
+        "category": "Security Cameras",
+        "description": "Wireless security camera with 4K video quality and advanced motion detection.",
+        "features": [
+            "4K HDR video",
+            "Color night vision",
+            "Two-way audio",
+            "Wire-free installation"
+        ],
+        "imgUrl": "https://i.ibb.co/F3K1G12/Arlo-Pro-4.jpg",
+        "date": "17/08/2024 18:00:00"
+    },
+    {
+        "title": "Ring Spotlight Cam",
+        "brand": "Ring",
+        "price": 249.99,
+        "rating": 4.7,
+        "category": "Security Cameras",
+        "description": "Outdoor security camera with built-in spotlight and motion-activated alerts.",
+        "features": [
+            "1080p HD video",
+            "Built-in spotlight",
+            "Two-way audio",
+            "Motion-activated notifications"
+        ],
+        "imgUrl": "https://i.ibb.co/7vHGQ7J/Ring-Spotlight-Cam.jpg",
+        "date": "17/08/2024 19:30:00"
+    },
+    {
+        "title": "Google Nest Cam (Battery)",
+        "brand": "Google",
+        "price": 179.99,
+        "rating": 4.5,
+        "category": "Security Cameras",
+        "description": "Battery-powered security camera with Google Assistant integration and intelligent alerts.",
+        "features": [
+            "1080p HD video",
+            "Battery-powered",
+            "Google Assistant integration",
+            "Intelligent alerts"
+        ],
+        "imgUrl": "https://i.ibb.co/v1GQkgW/Google-Nest-Cam.jpg",
+        "date": "17/08/2024 21:00:00"
+    },
+    {
+        "title": "Ring Spotlight Cam",
+        "brand": "Ring",
+        "price": 199.99,
+        "rating": 4.6,
+        "category": "Security Cameras",
+        "description": "Outdoor security camera with built-in spotlights and a siren for enhanced security.",
+        "features": [
+            "1080p HD video",
+            "Motion-activated alerts",
+            "Two-way talk",
+            "Siren alarm"
+        ],
+        "imgUrl": "https://i.ibb.co/K7LtCkT/Ring-Spotlight-Cam.jpg",
+        "date": "17/08/2024 21:30:00"
+    },
+    {
+        "title": "Eufy Security Cam 2C",
+        "brand": "Eufy",
+        "price": 129.99,
+        "rating": 4.5,
+        "category": "Security Cameras",
+        "description": "Wireless security camera with 180-day battery life and smart AI detection.",
+        "features": [
+            "1080p HD video",
+            "AI person detection",
+            "IP67 weatherproof",
+            "180-day battery life"
+        ],
+        "imgUrl": "https://i.ibb.co/2YpJZKX/Eufy-Security-Cam-2-C.jpg",
+        "date": "17/08/2024 23:00:00"
+    },
+    {
+        "title": "Wyze Cam v3",
+        "brand": "Wyze",
+        "price": 39.99,
+        "rating": 4.6,
+        "category": "Security Cameras",
+        "description": "Affordable wired security camera with color night vision and 1080p video.",
+        "features": [
+            "1080p HD video",
+            "Color night vision",
+            "IP65 weather-resistant",
+            "Two-way audio"
+        ],
+        "imgUrl": "https://i.ibb.co/kQH7NrY/Wyze-Cam-v3.jpg",
+        "date": "18/08/2024 00:30:00"
+    },
+    {
+        "title": "Blink Outdoor",
+        "brand": "Blink",
+        "price": 99.99,
+        "rating": 4.5,
+        "category": "Security Cameras",
+        "description": "Wireless security camera with long battery life and weather-resistant design.",
+        "features": [
+            "1080p HD video",
+            "Two-way audio",
+            "Motion detection",
+            "Weather-resistant"
+        ],
+        "imgUrl": "https://i.ibb.co/GpKmgtx/Blink-Outdoor.jpg",
+        "date": "18/08/2024 02:00:00"
+    },
+    {
+        "title": "Arlo Pro 4",
+        "brand": "Arlo",
+        "price": 199.99,
+        "rating": 4.7,
+        "category": "Security Cameras",
+        "description": "High-resolution security camera with 2K HDR video and integrated spotlight.",
+        "features": [
+            "2K HDR video",
+            "Integrated spotlight",
+            "Color night vision",
+            "Weather-resistant"
+        ],
+        "imgUrl": "https://i.ibb.co/7W4w98N/Arlo-Pro-4.jpg",
+        "date": "18/08/2024 03:30:00"
+    },
+    {
+        "title": "Amazon Echo Dot (4th Gen)",
+        "brand": "Amazon",
+        "price": 49.99,
+        "rating": 4.6,
+        "category": "Smart Speakers",
+        "description": "Compact smart speaker with Alexa and improved sound quality.",
+        "features": [
+            "Voice control",
+            "Improved sound quality",
+            "Smart home integration",
+            "Compact design"
+        ],
+        "imgUrl": "https://i.ibb.co/JKDr9vS/Amazon-Echo-Dot-4th-Gen.jpg",
+        "date": "18/08/2024 05:00:00"
+    },
+    {
+        "title": "Google Nest Audio",
+        "brand": "Google",
+        "price": 99.99,
+        "rating": 4.7,
+        "category": "Smart Speakers",
+        "description": "Smart speaker with Google Assistant and excellent sound quality.",
+        "features": [
+            "Google Assistant",
+            "Voice match",
+            "Room-filling sound",
+            "Smart home control"
+        ],
+        "imgUrl": "https://i.ibb.co/R7m6tjw/Google-Nest-Audio.jpg",
+        "date": "18/08/2024 06:30:00"
+    },
+    {
+        "title": "Bose Home Speaker 500",
+        "brand": "Bose",
+        "price": 299.99,
+        "rating": 4.6,
+        "category": "Smart Speakers",
+        "description": "Premium smart speaker with built-in Alexa and powerful stereo sound.",
+        "features": [
+            "Built-in Alexa",
+            "Stereo sound",
+            "Wi-Fi and Bluetooth connectivity",
+            "Customizable control"
+        ],
+        "imgUrl": "https://i.ibb.co/W0rcLFd/Bose-Home-Speaker-500.jpg",
+        "date": "18/08/2024 08:00:00"
+    },
+    {
+        "title": "Harman Kardon Citation One",
+        "brand": "Harman Kardon",
+        "price": 199.99,
+        "rating": 4.5,
+        "category": "Smart Speakers",
+        "description": "Elegant smart speaker with Google Assistant and rich sound quality.",
+        "features": [
+            "Google Assistant",
+            "Voice control",
+            "Multi-room playback",
+            "Wi-Fi and Bluetooth"
+        ],
+        "imgUrl": "https://i.ibb.co/7SN0M7v/Harman-Kardon-Citation-One.jpg",
+        "date": "18/08/2024 09:30:00"
+    },
+    {
+        "title": "Apple HomePod mini",
+        "brand": "Apple",
+        "price": 99.99,
+        "rating": 4.7,
+        "category": "Smart Speakers",
+        "description": "Compact smart speaker with Siri and 360-degree audio.",
+        "features": [
+            "Siri integration",
+            "360-degree audio",
+            "Intercom feature",
+            "Smart home hub"
+        ],
+        "imgUrl": "https://i.ibb.co/M5Wmjg2/Apple-Home-Pod-mini.jpg",
+        "date": "18/08/2024 11:00:00"
+    },
+    {
+        "title": "Asus ROG Phone 7",
+        "brand": "Asus",
+        "price": 999.99,
+        "rating": 4.8,
+        "category": "Smartphones",
+        "description": "Gaming smartphone with a high refresh rate display and extensive cooling system.",
+        "features": [
+            "144Hz AMOLED display",
+            "Snapdragon 8 Gen 2",
+            "6000mAh battery",
+            "AirTrigger controls"
+        ],
+        "imgUrl": "https://i.ibb.co/S0tfx9M/Asus-ROG-Phone-7.jpg",
+        "date": "16/08/2024 10:40:00"
+    },
+    {
+        "title": "Nokia X50",
+        "brand": "Nokia",
+        "price": 649.99,
+        "rating": 4.3,
+        "category": "Smartphones",
+        "description": "Durable smartphone with a pure Android experience and Zeiss optics.",
+        "features": [
+            "6.67-inch IPS LCD",
+            "Quad-camera setup",
+            "5G connectivity",
+            "5000mAh battery"
+        ],
+        "imgUrl": "https://i.ibb.co/R7nD2Mx/Nokia-X50.jpg",
+        "date": "16/08/2024 10:45:00"
+    },
+    {
+        "title": "Motorola Edge 40",
+        "brand": "Motorola",
+        "price": 699.99,
+        "rating": 4.4,
+        "category": "Smartphones",
+        "description": "Stylish smartphone with a high-refresh-rate display and versatile camera system.",
+        "features": [
+            "144Hz OLED display",
+            "108MP camera",
+            "5G connectivity",
+            "TurboPower charging"
+        ],
+        "imgUrl": "https://i.ibb.co/YRv0Qhx/Motorola-Edge-40.jpg",
+        "date": "16/08/2024 10:50:00"
+    },
+    {
+        "title": "Vivo X90 Pro",
+        "brand": "Vivo",
+        "price": 899.99,
+        "rating": 4.6,
+        "category": "Smartphones",
+        "description": "Flagship smartphone with Zeiss optics and a stunning AMOLED display.",
+        "features": [
+            "6.78-inch AMOLED display",
+            "Zeiss quad-camera system",
+            "5G connectivity",
+            "120W fast charging"
+        ],
+        "imgUrl": "https://i.ibb.co/mTYYfpB/Vivo-X90-Pro.jpg",
+        "date": "16/08/2024 10:55:00"
+    },
+    {
+        "title": "Realme GT 3",
+        "brand": "Realme",
+        "price": 599.99,
+        "rating": 4.2,
+        "category": "Smartphones",
+        "description": "Affordable flagship with high performance and fast charging capabilities.",
+        "features": [
+            "120Hz Super AMOLED display",
+            "Snapdragon 8+ Gen 1",
+            "5G connectivity",
+            "150W UltraDart charging"
+        ],
+        "imgUrl": "https://i.ibb.co/TPtFDy2/Realme-GT-3.jpg",
+        "date": "16/08/2024 11:00:00"
+    },
+    {
+        "title": "LG Velvet 2",
+        "brand": "LG",
+        "price": 749.99,
+        "rating": 4.4,
+        "category": "Smartphones",
+        "description": "Sleek and stylish smartphone with a cinematic display and advanced camera features.",
+        "features": [
+            "6.8-inch P-OLED display",
+            "Triple camera system",
+            "5G connectivity",
+            "Stereo speakers"
+        ],
+        "imgUrl": "https://i.ibb.co/jbcgpJd/LG-Velvet-2.jpg",
+        "date": "16/08/2024 11:05:00"
+    },
+    {
+        "title": "Samsung Galaxy A54 5G",
+        "brand": "Samsung",
+        "price": 449.99,
+        "rating": 4.4,
+        "category": "Smartphones",
+        "description": "Affordable smartphone with 5G connectivity and a vibrant display.",
+        "features": [
+            "6.4-inch Super AMOLED display",
+            "Exynos 1380",
+            "Triple camera system",
+            "5000mAh battery"
+        ],
+        "imgUrl": "https://i.ibb.co/4K2f5h5/Samsung-Galaxy-A54-5-G.jpg",
+        "date": "16/08/2024 11:50:00"
+    },
+    {
+        "title": "Samsung Galaxy M54",
+        "brand": "Samsung",
+        "price": 349.99,
+        "rating": 4.3,
+        "category": "Smartphones",
+        "description": "Mid-range smartphone with a large battery and impressive display.",
+        "features": [
+            "6.7-inch Super AMOLED Plus display",
+            "Exynos 1380",
+            "Quad camera system",
+            "6000mAh battery"
+        ],
+        "imgUrl": "https://i.ibb.co/DCH0744/Samsung-Galaxy-M54.jpg",
+        "date": "16/08/2024 11:55:00"
+    }
+]

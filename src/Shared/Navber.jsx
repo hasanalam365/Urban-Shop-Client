@@ -25,7 +25,7 @@ const Navber = () => {
             </Link>
         </li>
         <li>
-            <Link>
+            <Link to="/products">
                 Products
             </Link>
         </li>
