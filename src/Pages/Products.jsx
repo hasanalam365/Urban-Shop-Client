@@ -1,19 +1,55 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 
 const Products = () => {
 
+    const [hasFocus, setHasFocus] = useState(false);
+    const [searchProduct, setSearchProduct] = useState('')
+    const [searchInput, setSearchInput] = useState('')
     const { data: products, refetch, isLoading } = useQuery({
-        queryKey: ['all-products'],
+        queryKey: ['all-products', searchProduct],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/products')
+            const res = await axios.get(`http://localhost:5000/products?searchProduct=${searchProduct}`)
             return res.data
         }
     })
 
 
+    const handleSearch = () => {
+        refetch()
+        setSearchProduct(searchInput)
+    }
+
+
     return (
         <div className="pt-28 p-5">
+            <div className="flex items-center justify-center">
+                <div className="join ">
+
+                    <div>
+                        <input
+                            className={`p-3 join-item border-2 ${hasFocus ? 'border-sky-600' : 'border-gray-300'}`}
+                            placeholder="Search"
+                            type="text"
+                            onFocus={() => setHasFocus(true)}
+                            onBlur={() => setHasFocus(false)}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                        />
+                    </div>
+
+                    {/* <select className="select select-bordered join-item">
+                        <option disabled selected>Filter</option>
+                        <option>Sci-fi</option>
+                        <option>Drama</option>
+                        <option>Action</option>
+                    </select> */}
+                    <div className="indicator">
+
+                        <button onClick={handleSearch} className="btn join-item">Search</button>
+                    </div>
+                </div>
+            </div>
             <div>
                 <h1 className="text-3xl font-bold mb-4">All Products </h1>
             </div>
