@@ -11,18 +11,42 @@ const Products = () => {
     const [selectBrand, setSelectBrand] = useState('')
     const [selectCategory, setSelectCategory] = useState('')
 
-    const { data: products, refetch, isLoading } = useQuery({
-        queryKey: ['all-products', searchProduct],
+    // const { data: products, refetch, isLoading } = useQuery({
+    //     queryKey: ['all-products', searchProduct],
+    //     queryFn: async () => {
+    //         const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products?searchProduct=${searchProduct}`);
+    //         return res.data
+    //     }
+    // })
+    const { data: productsCatBrand } = useQuery({
+        queryKey: ['productsCatBrand'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products?searchProduct=${searchProduct}`);
+            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/productsCatBrand`);
             return res.data
         }
     })
 
+    const { data: products, refetch, isLoading } = useQuery({
+        queryKey: ['all-products', searchProduct],
+        queryFn: async () => {
+            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
+                params: {
+                    searchProduct,
+                    brand: selectBrand,
+                    category: selectCategory,
+                },
+            });
+            return res.data
+        }
+    })
+
+    // console.log(import.meta.env.VITE_URL_PATH_LOCAL)
 
     const handleSearch = () => {
-        refetch()
+
         setSearchProduct(searchInput)
+
+
     }
 
     const handleBrandChange = (e) => {
@@ -32,14 +56,15 @@ const Products = () => {
         setSelectCategory(e.target.value);
     };
     const handleFilter = () => {
-        console.log(selectBrand)
-        console.log(selectCategory)
+        refetch()
+        setSelectCategory('')
+        setSelectBrand('')
     }
 
 
-    const categories = [...new Set(products?.map(product => product.category))]
+    const categories = [...new Set(productsCatBrand?.map(product => product.category))]
 
-    const brands = [...new Set(products?.map(product => product.brand))]
+    const brands = [...new Set(productsCatBrand?.map(product => product.brand))]
 
     return (
         <div className="pt-28 p-5">
@@ -50,7 +75,7 @@ const Products = () => {
                     <div>
                         <input
                             className={`p-3 join-item border-2 ${hasFocus ? 'border-sky-600' : 'border-gray-300'}`}
-                            placeholder="Search"
+                            placeholder="Search by product name"
                             type="text"
                             onFocus={() => setHasFocus(true)}
                             onBlur={() => setHasFocus(false)}
