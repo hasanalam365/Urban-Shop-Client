@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { Bars } from "react-loader-spinner";
 
 const Products = () => {
 
@@ -22,8 +23,10 @@ const Products = () => {
     }
 
 
+
     return (
         <div className="pt-28 p-5">
+
             <div className="flex items-center justify-center">
                 <div className="join ">
 
@@ -52,6 +55,19 @@ const Products = () => {
             </div>
             <div>
                 <h1 className="text-3xl font-bold mb-4">All Products </h1>
+            </div>
+            <div className="flex items-center justify-center">
+                {
+                    isLoading && <Bars
+                        height="60"
+                        width="60"
+                        color="#F29120"
+                        ariaLabel="bars-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="mt-10"
+                        visible={true}
+                    />
+                }
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 ">
                 {
