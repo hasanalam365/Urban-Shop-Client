@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
-
+    const navigate = useNavigate();
     const [hasFocus, setHasFocus] = useState(false);
     const [searchProduct, setSearchProduct] = useState('')
     const [searchInput, setSearchInput] = useState('')
@@ -12,39 +13,63 @@ const Products = () => {
     const [selectCategory, setSelectCategory] = useState('')
     const [priceRange, setPriceRange] = useState('')
     const [sortBy, setSortBy] = useState('');
+    const token = localStorage.getItem('accessToken');
 
     const { data: productsCatBrand } = useQuery({
         queryKey: ['productsCatBrand'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/productsCatBrand`);
-            return res.data
+            try {
+                const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/productsCatBrand`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return res.data
+            } catch (err) {
+                if (err.response && err.response.status === 401) {
+
+                    navigate('/login');
+                }
+                throw err;
+            }
+
         },
 
 
     })
 
-    const { data: products, refetch, isLoading } = useQuery({
+
+
+    const { data: products, refetch, isLoading, error } = useQuery({
         queryKey: ['all-products', searchProduct, sortBy],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
-                params: {
-                    searchProduct,
-                    brand: selectBrand,
-                    category: selectCategory,
-                    priceRange: priceRange,
-                    sortBy: sortBy
-                },
-                headers: {
-                    authorization: `Bearer ${token}`
+            try {
+                const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
+                    params: {
+                        searchProduct,
+                        brand: selectBrand,
+                        category: selectCategory,
+                        priceRange: priceRange,
+                        sortBy: sortBy
+                    },
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return res.data;
+            } catch (err) {
+                if (err.response && err.response.status === 401) {
+
+                    navigate('/login');
                 }
-            });
-            return res.data
+                throw err;
+            }
         },
         refetchOnWindowFocus: false,
-        enabled: true
-    })
+        enabled: !!token
+    });
 
-    // console.log(import.meta.env.VITE_URL_PATH_LOCAL)
+
 
     const handleSearch = () => {
 
