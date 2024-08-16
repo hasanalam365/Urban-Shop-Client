@@ -10,6 +10,7 @@ const Products = () => {
     const [searchInput, setSearchInput] = useState('')
     const [selectBrand, setSelectBrand] = useState('')
     const [selectCategory, setSelectCategory] = useState('')
+    const [priceRange, setPriceRange] = useState('')
 
     // const { data: products, refetch, isLoading } = useQuery({
     //     queryKey: ['all-products', searchProduct],
@@ -34,6 +35,7 @@ const Products = () => {
                     searchProduct,
                     brand: selectBrand,
                     category: selectCategory,
+                    priceRange: priceRange
                 },
             });
             return res.data
@@ -55,16 +57,31 @@ const Products = () => {
     const handleCategoryChange = (e) => {
         setSelectCategory(e.target.value);
     };
+    const handlePriceChange = (e) => {
+        setPriceRange(e.target.value);
+
+    };
+
+
+
     const handleFilter = () => {
-        refetch()
+
         setSelectCategory('')
         setSelectBrand('')
+        setPriceRange('')
+        refetch()
     }
 
 
     const categories = [...new Set(productsCatBrand?.map(product => product.category))]
 
     const brands = [...new Set(productsCatBrand?.map(product => product.brand))]
+
+    const handleIdCHeck = (e) => {
+        console.log(e)
+    }
+
+
 
     return (
         <div className="pt-28 p-5">
@@ -108,12 +125,14 @@ const Products = () => {
                         ))
                     }
                 </select>
-                {/* <select className="select select-bordered join-item">
-                    <option disabled selected>Filter</option>
-                    <option>Sci-fi</option>
-                    <option>Drama</option>
-                    <option>Action</option>
-                </select> */}
+                <select className="select select-bordered join-item" value={priceRange} onChange={handlePriceChange}>
+                    <option value="" disabled>Price Range</option>
+                    <option value="0-500" >$0 - $500</option>
+                    <option value="500-1000" >$500 - $1000</option>
+                    <option value="1000-2000" >$1000 - $1700</option>
+                    <option value="2000-5000" >$1700 - $2500</option>
+
+                </select>
                 <div className="indicator">
 
                     <button onClick={handleFilter} className="btn join-item">Filter</button>
@@ -152,7 +171,7 @@ const Products = () => {
                                 <p>{product.rating}</p>
                             </div>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary btn-sm">see more</button>
+                                <button onClick={() => handleIdCHeck(product.imgUrl)} className="btn btn-primary btn-sm">see more</button>
                             </div>
                         </div>
                     </div>)
