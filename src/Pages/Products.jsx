@@ -14,7 +14,7 @@ const Products = () => {
     const { data: products, refetch, isLoading } = useQuery({
         queryKey: ['all-products', searchProduct],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/products?searchProduct=${searchProduct}`)
+            const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products?searchProduct=${searchProduct}`);
             return res.data
         }
     })
