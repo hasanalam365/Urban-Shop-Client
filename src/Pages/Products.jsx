@@ -11,7 +11,7 @@ const Products = () => {
     const [selectBrand, setSelectBrand] = useState('')
     const [selectCategory, setSelectCategory] = useState('')
     const [priceRange, setPriceRange] = useState('')
-
+    const [sortBy, setSortBy] = useState('');
     // const { data: products, refetch, isLoading } = useQuery({
     //     queryKey: ['all-products', searchProduct],
     //     queryFn: async () => {
@@ -28,14 +28,15 @@ const Products = () => {
     })
 
     const { data: products, refetch, isLoading } = useQuery({
-        queryKey: ['all-products', searchProduct],
+        queryKey: ['all-products'],
         queryFn: async () => {
             const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
                 params: {
                     searchProduct,
                     brand: selectBrand,
                     category: selectCategory,
-                    priceRange: priceRange
+                    priceRange: priceRange,
+                    sortBy: sortBy
                 },
             });
             return res.data
@@ -62,15 +63,19 @@ const Products = () => {
 
     };
 
+    const handleSortChange = (e) => {
+        setSortBy(e.target.value)
+        refetch()
+    }
 
 
     const handleFilter = () => {
-
-        setSelectCategory('')
-        setSelectBrand('')
-        setPriceRange('')
-        refetch()
-    }
+        setSelectCategory('');
+        setSelectBrand('');
+        setPriceRange('');
+        setSortBy('');
+        refetch();
+    };
 
 
     const categories = [...new Set(productsCatBrand?.map(product => product.category))]
@@ -86,7 +91,7 @@ const Products = () => {
     return (
         <div className="pt-28 p-5">
 
-            <div className="flex items-center justify-center">
+            <div className="">
                 <div className="join ">
 
                     <div>
@@ -108,35 +113,46 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center mt-5 ">
-                <select className="select select-bordered join-item" value={selectBrand} onChange={handleBrandChange}>
-                    <option value="" disabled>Brand Name</option>
-                    {
-                        brands.map((brand, index) => (
-                            <option key={index} value={brand}>{brand}</option>
-                        ))
-                    }
-                </select>
-                <select className="select select-bordered join-item" value={selectCategory} onChange={handleCategoryChange}>
-                    <option value="" disabled>Category</option>
-                    {
-                        categories.map((category, index) => (
-                            <option key={index} value={category}>{category}</option>
-                        ))
-                    }
-                </select>
-                <select className="select select-bordered join-item" value={priceRange} onChange={handlePriceChange}>
-                    <option value="" disabled>Price Range</option>
-                    <option value="0-500" >$0 - $500</option>
-                    <option value="500-1000" >$500 - $1000</option>
-                    <option value="1000-2000" >$1000 - $1700</option>
-                    <option value="2000-5000" >$1700 - $2500</option>
+            <div className="flex items-center justify-between mt-5">
+                <div className="flex items-center justify-center gap-3">
+                    <select className="select select-bordered join-item" value={selectBrand} onChange={handleBrandChange}>
+                        <option value="" disabled>Brand Name</option>
+                        {
+                            brands.map((brand, index) => (
+                                <option key={index} value={brand}>{brand}</option>
+                            ))
+                        }
+                    </select>
+                    <select className="select select-bordered join-item" value={selectCategory} onChange={handleCategoryChange}>
+                        <option value="" disabled>Category</option>
+                        {
+                            categories.map((category, index) => (
+                                <option key={index} value={category}>{category}</option>
+                            ))
+                        }
+                    </select>
+                    <select className="select select-bordered join-item" value={priceRange} onChange={handlePriceChange}>
+                        <option value="" disabled>Price Range</option>
+                        <option value="0-500" >$0 - $500</option>
+                        <option value="500-1000" >$500 - $1000</option>
+                        <option value="1000-2000" >$1000 - $1700</option>
+                        <option value="2000-5000" >$1700 - $2500</option>
 
-                </select>
-                <div className="indicator">
+                    </select>
 
-                    <button onClick={handleFilter} className="btn join-item">Filter</button>
+                    <div className="indicator">
+
+                        <button onClick={handleFilter} className="btn join-item">Filter</button>
+                    </div>
                 </div>
+
+                <select className="select select-bordered join-item" value={sortBy} onChange={handleSortChange}>
+                    <option value="" disabled>Sort By</option>
+                    <option value="priceAsc">Price: Low to High</option>
+                    <option value="priceDesc">Price: High to Low</option>
+                    <option value="dateDesc"> Newest first</option>
+                </select>
+
             </div>
 
             <div>
