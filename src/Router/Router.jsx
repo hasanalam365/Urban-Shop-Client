@@ -27,7 +27,8 @@ const router = createBrowserRouter([
                 path: '/products',
                 element: <PrivateRoute>
                     <Products></Products>
-                </PrivateRoute>
+                </PrivateRoute>,
+                // loader: () => fetch(`${import.meta.env.VITE_URL_PATH}/totalCount`)
             },
         ]
     },

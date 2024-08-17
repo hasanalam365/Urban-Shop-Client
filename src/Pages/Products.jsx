@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Products = () => {
     const navigate = useNavigate();
@@ -14,6 +14,42 @@ const Products = () => {
     const [priceRange, setPriceRange] = useState('')
     const [sortBy, setSortBy] = useState('');
     const token = localStorage.getItem('accessToken');
+
+    const [itemsPerPage, setItemsPerPage] = useState(8)
+
+    const { data: TotalCount } = useQuery({
+        queryKey: ['count-page'],
+        queryFn: async () => {
+            try {
+                const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/totalCount`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return res.data
+            } catch (err) {
+                if (err.response && err.response.status === 401) {
+
+                    navigate('/login');
+                }
+                throw err;
+            }
+        }
+    })
+
+
+    const count = TotalCount.count
+
+
+    // const itemsPerPages = 8
+    const numberOfPages = Math.ceil(count / itemsPerPage)
+
+    const pages = []
+    for (let i = 0; i < numberOfPages; i++) {
+        pages.push(i)
+    }
+
+
 
     const { data: productsCatBrand } = useQuery({
         queryKey: ['productsCatBrand'],
@@ -114,6 +150,11 @@ const Products = () => {
         console.log(e)
     }
 
+    const handleItemsPerPage = (e) => {
+
+        const value = e.target.value
+        setItemsPerPage(value)
+    }
 
 
     return (
@@ -184,8 +225,11 @@ const Products = () => {
             </div>
 
             <div>
-                <h1 className="text-3xl font-bold mb-4">All Products </h1>
+                <div className="divider"></div>
+                <h1 className="text-3xl font-bold mt-4">All Products </h1>
+                <div className="divider"></div>
             </div>
+
             <div className="flex items-center justify-center">
                 {
                     isLoading && <Bars
@@ -220,6 +264,19 @@ const Products = () => {
                         </div>
                     </div>)
                 }
+            </div>
+
+            <div className="mt-10">
+                {
+                    pages.map(page => <button key={page} className="btn ml-2 ">
+                        {page}
+                    </button>)
+                }
+                <select value={itemsPerPage} onChange={handleItemsPerPage} id="" className="ml-2 p-2 h-10 bg-gray-200 rounded-xl">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
             </div>
         </div>
     );
