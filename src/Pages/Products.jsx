@@ -155,8 +155,19 @@ const Products = () => {
 
         const value = e.target.value
         setItemsPerPage(value)
+        setCurrentPage(0)
     }
 
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
 
     return (
         <div className="pt-28 p-5">
@@ -268,7 +279,7 @@ const Products = () => {
             </div>
 
             <div className="mt-10">
-
+                <button onClick={handlePrevPage} className="btn">Prev</button>
                 {
                     pages.map(page => <button
                         onClick={() => setCurrentPage(page)}
@@ -276,6 +287,7 @@ const Products = () => {
                         {page}
                     </button>)
                 }
+                <button onClick={handleNextPage} className="btn">Next</button>
                 <select value={itemsPerPage} onChange={handleItemsPerPage} id="" className="ml-2 p-2 h-10 bg-gray-200 rounded-xl">
                     <option value="5">5</option>
                     <option value="10">10</option>
