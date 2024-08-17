@@ -16,7 +16,7 @@ const Products = () => {
     const token = localStorage.getItem('accessToken');
 
     const [itemsPerPage, setItemsPerPage] = useState(8)
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(0)
 
     const { data: TotalCount } = useQuery({
         queryKey: ['count-page'],
@@ -108,7 +108,7 @@ const Products = () => {
         enabled: !!token
     });
 
-    console.log(products?.length)
+
 
     const handleSearch = () => {
 
@@ -161,7 +161,7 @@ const Products = () => {
     }
 
     const handlePrevPage = () => {
-        if (currentPage > 1) {
+        if (currentPage > 0) {
             setCurrentPage(currentPage - 1)
         }
     }
