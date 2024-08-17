@@ -16,6 +16,7 @@ const Products = () => {
     const token = localStorage.getItem('accessToken');
 
     const [itemsPerPage, setItemsPerPage] = useState(8)
+    const [currentPage, setCurrentPage] = useState(0)
 
     const { data: TotalCount } = useQuery({
         queryKey: ['count-page'],
@@ -267,8 +268,11 @@ const Products = () => {
             </div>
 
             <div className="mt-10">
+
                 {
-                    pages.map(page => <button key={page} className="btn ml-2 ">
+                    pages.map(page => <button
+                        onClick={() => setCurrentPage(page)}
+                        key={page} className={`btn ml-2 ${page === currentPage ? 'bg-orange-600 text-white' : ''}`}>
                         {page}
                     </button>)
                 }
