@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
     const navigate = useNavigate();
@@ -16,41 +16,7 @@ const Products = () => {
     const token = localStorage.getItem('accessToken');
 
     const [itemsPerPage, setItemsPerPage] = useState(8)
-    const [currentPage, setCurrentPage] = useState(0)
-
-    const { data: TotalCount } = useQuery({
-        queryKey: ['count-page'],
-        queryFn: async () => {
-            try {
-                const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/totalCount`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                return res.data
-            } catch (err) {
-                if (err.response && err.response.status === 401) {
-
-                    navigate('/login');
-                }
-                throw err;
-            }
-        }
-    })
-
-
-    const count = TotalCount?.count
-
-
-    // const itemsPerPages = 8
-    const numberOfPages = Math.ceil(count / itemsPerPage)
-
-    const pages = []
-    for (let i = 0; i < numberOfPages; i++) {
-        pages.push(i)
-    }
-
-
+    const [currentPage, setCurrentPage] = useState(1)
 
     const { data: productsCatBrand } = useQuery({
         queryKey: ['productsCatBrand'],
@@ -75,9 +41,7 @@ const Products = () => {
 
     })
 
-
-
-    const { data: products, refetch, isLoading, error } = useQuery({
+    const { data: products, refetch, isLoading } = useQuery({
         queryKey: ['all-products', searchProduct, sortBy, currentPage],
         queryFn: async () => {
             try {
@@ -110,6 +74,15 @@ const Products = () => {
 
 
 
+
+    const totalItems = products?.totalItems
+    const numberOfPages = Math.ceil(totalItems / itemsPerPage)
+
+    const pages = [];
+    for (let i = 0; i < numberOfPages; i++) {
+        pages.push(i + 1);
+    }
+
     const handleSearch = () => {
 
         setSearchProduct(searchInput)
@@ -137,10 +110,7 @@ const Products = () => {
 
     }
 
-
     const handleFilter = () => {
-
-
         refetch()
     };
 
@@ -149,27 +119,21 @@ const Products = () => {
 
     const brands = [...new Set(productsCatBrand?.map(product => product.brand))]
 
-    const handleIdCHeck = (e) => {
-        console.log(e)
-    }
-
-    const handleItemsPerPage = (e) => {
-
-        const value = e.target.value
-        setItemsPerPage(value)
-        setCurrentPage(0)
-    }
 
     const handlePrevPage = () => {
-        if (currentPage > 0) {
-            setCurrentPage(currentPage - 1)
+        if (currentPage > 1) {
+            setCurrentPage(prevPage => prevPage - 1);
+            refetch();
         }
     }
     const handleNextPage = () => {
-        if (currentPage < pages.length - 1) {
-            setCurrentPage(currentPage + 1)
+        if (currentPage < numberOfPages) {
+            setCurrentPage(prevPage => prevPage + 1);
+            refetch();
         }
     }
+
+
 
     return (
         <div className="pt-28 p-5">
@@ -257,9 +221,9 @@ const Products = () => {
                     />
                 }
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 ">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 ">
                 {
-                    products?.map(product => <div className="card card-compact bg-base-100  shadow-xl" key={product._id}>
+                    products?.products?.map(product => <div className="card card-compact bg-base-100  shadow-xl" key={product._id}>
                         <figure>
                             <img
                                 src={product.imgUrl}
@@ -273,7 +237,7 @@ const Products = () => {
                                 <p>{product.rating}</p>
                             </div>
                             <div className="card-actions justify-end">
-                                <button onClick={() => handleIdCHeck(product.imgUrl)} className="btn btn-primary btn-sm">see more</button>
+                                <button className="btn btn-primary btn-sm">more info</button>
                             </div>
                         </div>
                     </div>)
@@ -286,15 +250,11 @@ const Products = () => {
                     pages.map(page => <button
                         onClick={() => setCurrentPage(page)}
                         key={page} className={`btn ml-2 ${page === currentPage ? 'bg-orange-600 text-white' : ''}`}>
-                        {page + 1}
+                        {page}
                     </button>)
                 }
                 <button onClick={handleNextPage} className="btn">Next</button>
-                <select value={itemsPerPage} onChange={handleItemsPerPage} id="" className="ml-2 p-2 h-10 bg-gray-200 rounded-xl">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                </select>
+
             </div>
         </div>
     );
