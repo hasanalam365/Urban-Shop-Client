@@ -1,4 +1,4 @@
-# Frontend - React E-commerce Application
+# UrbanShop 
 
 This is the frontend of the E-commerce application built with React and Vite. It interacts with the backend via RESTful APIs to display products, manage user sessions, and handle cart functionality.
 
@@ -15,4 +15,8 @@ This is the frontend of the E-commerce application built with React and Vite. It
 1. Clone this repository:
 
    ```bash
-https://github.com/hasanalam365/Urban-Shop-Client
+   https://github.com/hasanalam365/Urban-Shop-Client
+
+2. npm install
+# or
+yarn install
