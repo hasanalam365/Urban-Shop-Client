@@ -65,13 +65,7 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-3">
-                    {
-                        user?.email ? <h5 className='text-white'>{user.email}</h5>
-                            :
 
-                            <CgProfile className='text-3xl text-white' />
-
-                    }
                     {user?.email ? <button onClick={handleLogOut} className='btn btn-ghost text-white bg-[#12809e]'>
                         <Link>Logout</Link>
                     </button>

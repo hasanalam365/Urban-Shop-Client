@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Products = () => {
     const navigate = useNavigate();
@@ -135,6 +135,8 @@ const Products = () => {
 
 
 
+
+
     return (
         <div className="pt-28 p-5">
 
@@ -160,9 +162,9 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between mt-5">
-                <div className="flex items-center justify-center gap-3">
-                    <select className="select select-bordered join-item" value={selectBrand} onChange={handleBrandChange}>
+            <div className="flex flex-col mt-5">
+                <div className="flex flex-col  md:flex-row lg:flex-row  gap-3">
+                    <select className="select select-bordered join-item " value={selectBrand} onChange={handleBrandChange}>
                         <option value="" disabled>Brand Name</option>
                         {
                             brands.map((brand, index) => (
@@ -193,12 +195,14 @@ const Products = () => {
                     </div>
                 </div>
 
-                <select className="select select-bordered join-item" value={sortBy} onChange={handleSortChange}>
-                    <option value="" disabled>Sort By</option>
-                    <option value="priceAsc">Price: Low to High</option>
-                    <option value="priceDesc">Price: High to Low</option>
-                    <option value="dateDesc"> Newest first</option>
-                </select>
+                <div className="mt-5">
+                    <select className="select select-bordered join-item" value={sortBy} onChange={handleSortChange}>
+                        <option value="" disabled>Sort By</option>
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                        <option value="dateDesc"> Newest first</option>
+                    </select>
+                </div>
 
             </div>
 
@@ -221,41 +225,51 @@ const Products = () => {
                     />
                 }
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 ">
-                {
-                    products?.products?.map(product => <div className="card card-compact bg-base-100  shadow-xl" key={product._id}>
-                        <figure>
-                            <img
-                                src={product.imgUrl}
-                                alt="Product Image" className="w-[250px] h-[170px]" />
-                        </figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{product.title}</h2>
-                            <p>{product.description.slice(0, 50)}.......</p>
-                            <div className="flex items-center justify-center gap-5 ">
-                                <p>${product.price}</p>
-                                <p>{product.rating}</p>
-                            </div>
-                            <div className="card-actions justify-end">
-                                <button className="btn btn-primary btn-sm">more info</button>
-                            </div>
-                        </div>
-                    </div>)
-                }
-            </div>
+            {
 
-            <div className="mt-10">
-                <button onClick={handlePrevPage} className="btn">Prev</button>
-                {
-                    pages.map(page => <button
-                        onClick={() => setCurrentPage(page)}
-                        key={page} className={`btn ml-2 ${page === currentPage ? 'bg-orange-600 text-white' : ''}`}>
-                        {page}
-                    </button>)
-                }
-                <button onClick={handleNextPage} className="btn">Next</button>
+                products?.products?.length === 0 ? <div className="flex items-center justify-center mt-10 ">
+                    <h1 className="flex items-center justify-center text-lg font-semibold">Opps! No match any products</h1>
+                </div>
 
-            </div>
+                    :
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 ">
+                        {
+                            products?.products?.map(product => <div className="card card-compact bg-base-100  shadow-xl" key={product._id}>
+                                <figure>
+                                    <img
+                                        src={product.imgUrl}
+                                        alt="Product Image" className="w-[250px] h-[170px]" />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">{product.title}</h2>
+                                    <p>{product.description.slice(0, 50)}.......</p>
+                                    <div className="flex items-center justify-center gap-5 ">
+                                        <p>${product.price}</p>
+                                        <p>{product.rating}</p>
+                                    </div>
+                                    <div className="card-actions justify-end">
+                                        <Link to={`/product-details/${product._id}`} className="btn btn-primary btn-sm">more info</Link >
+                                    </div>
+                                </div>
+                            </div>)
+                        }
+                    </div>}
+
+            {
+                products?.products?.length > 0 && <div className="mt-10">
+                    <button onClick={handlePrevPage} className="btn">Prev</button>
+                    {
+                        pages.map(page => <button
+                            onClick={() => setCurrentPage(page)}
+                            key={page} className={`btn ml-2 ${page === currentPage ? 'bg-orange-600 text-white' : ''}`}>
+                            {page}
+                        </button>)
+                    }
+                    <button onClick={handleNextPage} className="btn">Next</button>
+
+                </div>
+            }
         </div>
     );
 };
