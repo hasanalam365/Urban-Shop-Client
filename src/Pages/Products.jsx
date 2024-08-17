@@ -16,7 +16,7 @@ const Products = () => {
     const token = localStorage.getItem('accessToken');
 
     const [itemsPerPage, setItemsPerPage] = useState(8)
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
 
     const { data: TotalCount } = useQuery({
         queryKey: ['count-page'],
@@ -39,7 +39,7 @@ const Products = () => {
     })
 
 
-    const count = TotalCount.count
+    const count = TotalCount?.count
 
 
     // const itemsPerPages = 8
@@ -78,7 +78,7 @@ const Products = () => {
 
 
     const { data: products, refetch, isLoading, error } = useQuery({
-        queryKey: ['all-products', searchProduct, sortBy],
+        queryKey: ['all-products', searchProduct, sortBy, currentPage],
         queryFn: async () => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_URL_PATH}/products`, {
@@ -87,7 +87,9 @@ const Products = () => {
                         brand: selectBrand,
                         category: selectCategory,
                         priceRange: priceRange,
-                        sortBy: sortBy
+                        sortBy: sortBy,
+                        currentPage,
+                        itemsPerPage
                     },
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -106,7 +108,7 @@ const Products = () => {
         enabled: !!token
     });
 
-
+    console.log(products?.length)
 
     const handleSearch = () => {
 
@@ -159,7 +161,7 @@ const Products = () => {
     }
 
     const handlePrevPage = () => {
-        if (currentPage > 0) {
+        if (currentPage > 1) {
             setCurrentPage(currentPage - 1)
         }
     }
@@ -284,7 +286,7 @@ const Products = () => {
                     pages.map(page => <button
                         onClick={() => setCurrentPage(page)}
                         key={page} className={`btn ml-2 ${page === currentPage ? 'bg-orange-600 text-white' : ''}`}>
-                        {page}
+                        {page + 1}
                     </button>)
                 }
                 <button onClick={handleNextPage} className="btn">Next</button>
